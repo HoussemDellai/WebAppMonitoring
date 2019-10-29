@@ -9,6 +9,10 @@ $ dotnet add package prometheus-net.AspNetCore
 $ dotnet run
 # Open the web app on https://localhost:5001/metrics
 
-$ docker build .
+# Create a docker container
+$ docker build -t houssemdocker/webappmonitoring:prometheus .
+$ docker run -d -p 5555:80/tcp houssemdocker/webappmonitoring:prometheus
+$ docker push houssemdocker/webappmonitoring:prometheus
 
+# deploy the container into Kubernetes
 $ kubectl apply -f web-deploy-svc.yaml
