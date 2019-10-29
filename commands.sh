@@ -25,13 +25,16 @@ $ kubectl get services
 
 # Check default Prometheus configuration in prometheus.yml
 $ kubectl exec -it <your-prometheus-server> -c prometheus-server -- cat /etc/config/prometheus.yml
+# Check default Prometheus configuration in ConfigMap
+$ kubectl get configmaps
+$ kubectl describe configmap <your-prometheus-server-configmap>
 
 # Add and edit values.yaml
 $ helm upgrade my-prometheus stable/prometheus --set server.service.type=LoadBalancer --set rbac.create=false  -f prometheus.values.yaml
 
-# Check Prometheus configuration in ConfigMap
-$ kubectl get configmaps
-$ kubectl describe configmap <your-prometheus-server-configmap>
 
 # Check new Prometheus configuration in prometheus.yml
 $ kubectl exec -it <your-prometheus-server> -c prometheus-server -- cat /etc/config/prometheus.yml
+# Check new Prometheus configuration in ConfigMap
+$ kubectl get configmaps
+$ kubectl describe configmap <your-prometheus-server-configmap>
