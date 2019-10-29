@@ -16,3 +16,5 @@ $ docker push houssemdocker/webappmonitoring:prometheus
 
 # deploy the container into Kubernetes
 $ kubectl apply -f web-deploy-svc.yaml
+
+# 

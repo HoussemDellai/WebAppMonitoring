@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mvc-deployment
+  name: webapp
 spec:
   selector:
     matchLabels:
-      app: mvc
+      app: webapp
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: mvc
+        app: webapp
     spec:
       containers:
-      - name: mvc
+      - name: webapp
         image: houssemdocker/webappmonitoring:prometheus
         ports:
         - containerPort: 80
@@ -21,10 +21,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: mvc-service
+  name: webapp-service
 spec:
   selector:
-    app: mvc
+    app: webapp
   ports:
   - protocol: TCP
     port: 80
